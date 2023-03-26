@@ -1,4 +1,11 @@
 function fetchBooks() {
+  return fetch('https://anapioficeandfire.com/api/books')
+  .then(response=> response.json())
+  .then(books=> {
+    books.sort((a,b) => a.name.localeCompare(b.name));
+    renderBooks(books);
+  })
+  .catch(error=>console.log(error));
   // To pass the tests, don't forget to return your fetch!
   
 }
